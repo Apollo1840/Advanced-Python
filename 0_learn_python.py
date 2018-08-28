@@ -1,43 +1,21 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jul 31 22:21:31 2018
 
-@author: zouco
-"""
+# 0 - ths first thing is how do you learn python by yourself
+a = 'dgadfag'
+dir(a)
+b = [1,2,3]
+dir(b)
 
-this_string = '''dkljglakg:
-dgfakdgja
-    dfj'gadg'
-"jdlfkaj"
-'''
-print(this_string)   
-
-
-# v2:  int, long, float, complex
-y = 1+2j
-type(y)
-print(y.real)
-print(y.imag)
-
-print(36/7)
-print(36%7)
-
-# v3:   int, float, complex
-# int is unlimited
-print(36//7)
-
-
-# self learn of python
 dir()
 dir('__builtins__')
+
 help(repr)
+
+# what is repr and eval:
 a='dgadf dga'
 print(a)
 repr(a)
 eval(repr(a))==a
-
-a='dgadfag'
-dir(a)
 
 
 # math
@@ -46,41 +24,92 @@ dir(math)
 math.ceil(3.4)
 
 
+
+
+# 1 - number and long string
+# v2
+print(36/float(7))
+
+# v3
+print(36/7)
+print(36%7)
+print(36//7)
+
+import sys
+print(sys.maxsize)  # the maxint of v3
+
+# complex
+y = 1+2j
+type(y)
+print(y.real)
+print(y.imag)
+
+
+
 # non-trial -> True
 int(True)
 
 # random
 import random
 
-# uniform
+# generate random number
+# 3 uniforms
 for i in range(100):
-    print(random.random())
+    print(random.random())  # uniform distribute in [0,1)
 
 for i in range(100):
-    print(random.uniform(1,10))
-
-print(random.randint(5))
-print(random.choice(['a','b','c']))
-
+    print(random.uniform(1,10)) # uniform distribute in [1,10)
+    
+for i in range(100):
+    print(random.randint(5)) # 0,1,2,3,4,5
 
 # normal
 random.normalvariate(0,1)
 
+# random choice
+print(random.choice(['a','b','c']))
+print(random.choices(['a','b','c'],k=3))
+print(random.sample(['a','b','c'],3))  # this is do not have replacement
 
 
 
-# simples IO
-input_1 = input('pls input something:\n')
-print(input_1)
+
+# long string
+this_string = '''dkljglakg:
+dgfakdgja
+    dfj'gadg'
+"jdlfkaj"
+'''
+print(this_string)   
+
+# 2 - list, tuple, set and dictionary
+
+# list
+a = [1,2,3,4]
+print(a.pop())
+print(a)
+
+print(a)
+print(a.pop(0))
+print(a)
+
+print(a)
+print(a.insert(0, 10))
+print(a)
+
+print(a.insert(-1, 10))
+print(a)
 
 
-# function input
-def cm(f=0,i=0):
-    print(f+i)
-    return f+i
+# tuple
+# tuple is smaller
+import sys
+a = (1,2,3,4,5)
+sys.getsizeof(a)
 
-cm(3)
-cm(i=1)
+# tuple assignment, works also for list
+q,w,e,r,t = a
+print(w)
 
 
 # set
@@ -97,8 +126,15 @@ set1.intersection(set2)
 dikt = {}
 dikt.get('dg', None)
 dikt.keys()
+dikt['A'] = 1          # for one
+dikt.update({'A':1})   # for multiple
 
 
+
+
+# 3 - generator
+
+# generator
 # yield
 def generator():
     for i in range(10):
@@ -119,15 +155,21 @@ g = (i for i in range(10))
 print(list(g))
 
 
-# tuple is smaller
-import sys
-a = (1,2,3,4,5)
-sys.getsizeof(a)
 
-# tuple assignment, works also for list
-q,w,e,r,t = a
-print(w)
 
+
+# simples IO
+input_1 = input('pls input something:\n')
+print(input_1)
+
+
+# function input
+def cm(f=0,i=0):
+    print(f+i)
+    return f+i
+
+cm(3)
+cm(i=1)
 
 # use lambda to create function generator
 def qua(a,b,c):
@@ -135,6 +177,9 @@ def qua(a,b,c):
 
 f = qua(2,1,3)
 f(2)    
+
+
+
 
 
 
@@ -195,6 +240,33 @@ logger1.info('what')
 
 
 
+
+
+
+# class
+# class can take variable out of definition
+
+
+
+
+
+
+# JSON is slight different defined dictionary in Python
+    
+import json
+with open('... .txt','w',encoding = 'utf-8') as f:
+    json.dump(a_dict, f, ensure_ascii = False)
+with open('... .txt','r',encoding = 'utf-8') as f:
+    a_dict = json.load(f)
+
+
+
+# change between json_file_string and dict
+json.loads(a_string_of_json_file) # this will output a dict
+json.dumps(a_dict, ensure_ascii = False, sort_keys=True, indent=4) # this will output a json_file_string
+
+
+
 # recursive function
 def fibonacci(n):
     if n==0:
@@ -233,41 +305,6 @@ def fibonacci_fast2(n):
         return value
 
 
-# class
-# class can take variable out of definition
-
-
-
-
-
-
-# JSON is slight different defined dictionary in Python
-    
-import json
-with open('... .txt','w',encoding = 'utf-8') as f:
-    json.dump(a_dict, f, ensure_ascii = False)
-with open('... .txt','r',encoding = 'utf-8') as f:
-    a_dict = json.load(f)
-
-
-
-# change between json_file_string and dict
-json.loads(a_string_of_json_file) # this will output a dict
-json.dumps(a_dict, ensure_ascii = False, sort_keys=True, indent=4) # this will output a json_file_string
-
-
-
-
-
-
-
-
-import winsound
-frequency = 2500  # Set Frequency To 2500 Hertz
-duration = 1000  # Set Duration To 1000 ms == 1 second
-winsound.Beep(frequency, duration)
-
-
 ####################################################################
 # simplify the program by math:
 def is_prime(n):
@@ -286,3 +323,16 @@ def is_prime(n):
             return False
     return True
 ###################################################################
+
+
+
+
+# bonus
+
+
+import winsound
+frequency = 2500  # Set Frequency To 2500 Hertz
+duration = 1000  # Set Duration To 1000 ms == 1 second
+winsound.Beep(frequency, duration)
+
+

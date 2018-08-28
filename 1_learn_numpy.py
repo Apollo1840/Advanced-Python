@@ -34,7 +34,7 @@ np.argmax(A, axis = 0)
 np.sort(A, axis = 0)
 np.argsort(A.ravel()) # order
 
-
+np.cumsum(A, axis = 0)
 
 
 
@@ -88,6 +88,9 @@ print(A / np.sum(A,axis=0))
 
 ################# numpy initialization   ####################
 print(np.arange(5))
+print(np.arange(0,11,1))  # exclude 11
+
+print(np.linspace(0,10,10))  # include 10
 print(np.linspace(0, 2*np.pi, 100))
 
 
@@ -114,6 +117,13 @@ print(np.hsplit(a, (3, 4)))
 # column
 print(np.vstack(a,b))
 print(np.vsplit(b , 2))
+
+
+# np.c_
+# np.meshgrid
+
+
+
 
 
 #################  program operation   #################
