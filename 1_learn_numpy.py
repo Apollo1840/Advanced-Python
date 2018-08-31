@@ -9,118 +9,128 @@ import numpy as np
 import time
 
 
-# randn is normalvariate
-xn = np.random.randn(100000)
-
-# np.sum is faster than sum
-tic = time.time()
-print(sum(xn))
-print('duration: ', time.time()-tic)
-
-tic = time.time()
-print(np.sum(xn))
-print('duration:', time.time()-tic)
-
-np.exp(xn)  # this is crazy for for loop
-np.sqrt(np.abs(xn))
-np.floor(xn)
-
-
-a = np.array([[1,4,2,6,7,8,9,3,4,6,4,5,7,3,6,2.3]])
-A = a.reshape(4,4)
-
-np.sum(A, axis = 0)  # axis = 0 means columnwise
-np.argmax(A, axis = 0)
-np.sort(A, axis = 0)
-np.argsort(A.ravel()) # order
-
-np.cumsum(A, axis = 0)
-
-
-
-# numpy deal with matrix operations
-
-a = np.array([1,4,2,6,7,8,9,3,4,6,4,5,7,3,6,2.3])
-a.shape  # not a fixed array
-
-A = a.reshape(4,4)  # the row order is keeped
-print(A)
-print(A[2,2])
-print(A[:,3])
-print(A.reshape(2,-1,order='F')) # the column order is 
-print(A.ravel()) # return to vector
-
-
-x = np.array([1,2,3,4])
-print(A)
-print(x)
-b = np.dot(A,x)   # weapon of vectorization
-print(b)
-
-x2 = np.array([[1,2,3,4]]).T
-b2 = np.dot(A,x2)
-print(b2)
-
-# np.dot is faster than for loop
-
-# important fact:
-
-a = np.random.randn(5)
-a.shape
-print(np.dot(a.T,a))
-
-a = np.random.randn(1,5)
-a.shape
-print(np.dot(a.T,a))
-
-
-# numpy broadcasting
-a = np.array([[1,4,2,6,7,8,9,3,4,6,4,5,7,3,6,2.3]])
-A = a.reshape(4,4)
-print('A\n',A)
-print(A + 2)
-print(A + np.array([[0,1,-1,100]]))
-print(A + np.array([[0,1,-1,100]]).T)
-np.sum(A,axis=0)
-print(A / np.sum(A,axis=0))
-
-
-
-################# numpy initialization   ####################
+# 0 - initilization
+# array 
 print(np.arange(5))
-print(np.arange(0,11,1))  # exclude 11
+print(np.arange(0,11,2))  # exclude 11
 
-print(np.linspace(0,10,10))  # include 10
+print(np.linspace(0,10,100))  # include 10
 print(np.linspace(0, 2*np.pi, 100))
-
+# np.logspace(0,2,10)
 
 print(np.zeros(3))
+print(np.ones(3))
+
+# matrix
 print(np.zeros((3,3)))
+print(np.ones((3,3)))
 print(np.eye(3))
 
 t0 = np.array([[1,2],[3,4]])
 print(np.tile(t0, (2,2)))
 
-#################  numpy matrix operation   #################
-a = np.floor(10*np.random.random([2, 12]))
-b = np.floor(10*np.random.random([2, 12]))
+a = np.array([1,4,2,6,7,8,9,3,4,6,4,5,7,3,6,2.3])
+a.shape  # not a fixed array
+A = a.reshape(4,4)  # the row order is keeped
+# use resize will change the a
+print(A)  # remember the A here
+
+x1 = np.random.randn(3,3)
+print(x1)
+
+
+# 1 - np functions on np.array
+xn = np.random.randn(100000)  # randn is normalvariate
+%time print(sum(xn))
+%time print(np.sum(xn))  # np function is incr ediablely faster
+
+# more np functions:
+np.sum(A, axis = 0)  # axis = 0 means columnwise
+np.prod(A, axis = 0)
+
+np.cumsum(A, axis = 0)
+np.diff(A, axis = 0)  # a[n] = x[n+1] -x[n]
+
+np.var(A, axis = 0)
+np.std(A, axis = 0)
+
+np.max(A, axis = 0)
+np.argmax(A, axis = 0)
+
+np.sort(A, axis = 0)
+np.argsort(A.ravel()) # order
+
+# entry-wise
+np.exp(xn)  # this is crazy for for loop
+np.sqrt(np.abs(xn))
+np.floor(xn)
+
+
+# 2 - matrix
+# 2.1 matrix operations
+
+# 1) index
+print(A[2,2])
+print(A[(1,2)])
+print(A[:,3])
+
+# sampling
+x = np.arange(100)
+x_sample = x[::10]
+x_reverse = x[::-1]
+
+# 2) reshape and ravel
+print(A.reshape(2,-1,order='F')) # -1 means adaptive
+print(A.ravel()) # return to vector
+
+# 3) np.dot (faster than for loop multiplicaiton)
+x = np.array([1,2,3])
+x = x.reshape(3,1)
+b = np.dot(A,x)   # weapon of vectorization
+print(b)
+
+# important: when one of the input lack dimension, it will be adaptive
+a = np.random.randn(5)
+a.shape
+print(np.dot(a.T,a))
+
+
+
+# 4) stack and split
+a = np.floor(10*np.random.random((2, 12)))
+b = np.floor(10*np.random.random((2, 12))
 print('a\n', a)
 print('b\n', b)
 
-# row 
-print(np.hstack([a, b]))
-print(np.hsplit(a, 3))
+# stack
+print(np.hstack((a, b)))
+print(np.c_[a,b])  # increase columns
 
-# 表示从某位置切割  (3, 4)  切两下 最左边记为0 第一块有3列
-print(np.hsplit(a, (3, 4)))
+print(np.vstack((a, b))
+print(np.r_[a,b]) # increase rows
 
-# column
-print(np.vstack(a,b))
+# split
+print(np.hsplit(a, 3))  # evenly into 3 part
+print(np.hsplit(a, (3, 4)))   # 表示从某位置切割  (3, 4)  切两下 最左边记为0 第一块有3列
+
 print(np.vsplit(b , 2))
 
 
-# np.c_
-# np.meshgrid
+# 2.2 matrix broadcasting
+
+print('A\n',A)
+print(A + 2)
+print(A + np.array([[0,1,-1,100]]))
+print(A + np.array([[0,1,-1,100]]).T)
+
+np.sum(A, axis=0)
+print(A / np.sum(A,axis=0))
+
+# list of boolean
+np.where([True, True, False, True])
+np.where([True, True, False, True], range(4), range(0,40,10)) # another ways to use np.where
+
+np.nonzero([0, 2, 0, 1]) # it is better to not use it on boolean
 
 
 
@@ -150,5 +160,98 @@ print(a2)
 print(a_copy)
 print(a_view)
 
+#################  bonus operation   #################
+
+# np.c_ for 1 dim array
+A = np.arange(6)
+np.c_[A,A]
 
 
+# np.meshgrid
+
+# np.all
+np.all([True, False])
+np.any([True, False])
+# np.apply_along_axis 
+np.apply_along_axis(lambda x: np.sum(x), 0, A.reshape(2,3))
+
+# cov
+np.cov(x,y)
+np.cov(X.T)  # each column of X is an attribute 
+
+np.corrcoef(x, y)
+
+
+
+
+
+
+##########################################################################
+##########################################################################
+##########################################################################
+
+# Handbook of numpy
+a = np.arange(12)
+print(a)
+
+a.ndim
+a.shape
+a.size
+
+# numpy initialization
+A = a.reshape(3,4)
+np.ones_like(a)
+np.zeros_like(a)
+
+B1 = np.random.rand(4,3)
+B2 = np.random.randn(4,3)
+
+# say that we want a matrix aij = i+j
+np.fromfunction(lambda i,j:i+j, (3,3))
+
+a = np.arange(9)
+idx = [1,3,1,4]
+print(np.take(a, idx))
+
+idx = [[1,2,-1],[1,2,-1]]
+print(np.take(a, idx))
+
+# alter value
+np.put(a, [0], [10])
+A
+
+
+
+
+# matrix operation
+A @ B1  # np.dot
+
+
+np.repeat([1,2,3],5).reshape(3,5)
+
+# newaxis 
+from numpy import newaxis
+a = np.arange(10)
+print(a.shape)
+b = a[newaxis,:]
+print(b.shape)
+b = a[:, newaxis]
+print(b.shape)
+a = a[:-1]
+A = a.reshape(3,3)
+B = A[:,newaxis,:]
+print(B)
+# delete newaxis
+np.squeeze(A)
+
+
+np.ptp(range(10)) # value_range
+
+
+mp.searchsorted(range(10),5)  # find the position of 5
+mp.searchsorted(range(10),5, side = 'left')  # left is empty boundary
+
+
+
+from numpy.linalg import svd
+u,s,vh = svd(M)
