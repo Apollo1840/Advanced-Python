@@ -41,8 +41,9 @@ str1.title()
 
 
 # join
-''.join(reversed(str1))
-str.upper(' '.join(list(str1)))
+print('|'.join(['a','b','c']))
+print(''.join(reversed(str1)))
+print(str.upper(' '.join(list(str1))))
 
 
 

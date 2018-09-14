@@ -74,6 +74,13 @@ print(A[2,2])
 print(A[(1,2)])
 print(A[:,3])
 
+print(A[0])  # the first row
+print(A[[1,3]]) # 2 rows
+# print(A[(1,3)])
+print(A[[0,2],[1,3]])
+ 
+
+
 # sampling
 x = np.arange(100)
 x_sample = x[::10]
@@ -123,13 +130,13 @@ print(A + 2)
 print(A + np.array([[0,1,-1,100]]))
 print(A + np.array([[0,1,-1,100]]).T)
 
+# practice
 np.sum(A, axis=0)
 print(A / np.sum(A,axis=0))
 
 # list of boolean
 np.where([True, True, False, True])
 np.where([True, True, False, True], range(4), range(0,40,10)) # another ways to use np.where
-
 np.nonzero([0, 2, 0, 1]) # it is better to not use it on boolean
 
 
@@ -248,10 +255,13 @@ np.squeeze(A)
 np.ptp(range(10)) # value_range
 
 
-mp.searchsorted(range(10),5)  # find the position of 5
-mp.searchsorted(range(10),5, side = 'left')  # left is empty boundary
+np.searchsorted(range(10),5)  # find the position of 5
+np.searchsorted(range(10),5, side = 'left')  # left is empty boundary
 
 
 
-from numpy.linalg import svd
-u,s,vh = svd(M)
+from numpy import linalg
+A_ = linalg.solve(A)
+x = linalg.solve(A, b)
+u,s,vh = linalg.eig(M)
+u,s,vh = linalg.svd(M)

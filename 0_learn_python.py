@@ -123,6 +123,9 @@ print(a)
 print(a.insert(-1, 10))
 print(a)
 
+a=[[1,2],[3,5],[5]]
+print([5 in i for i in a])
+
 # filter
 list_x = [1,2,3,None,4,1,2,3,None]
 
