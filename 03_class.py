@@ -28,3 +28,47 @@ class People():
             return 'noknown'
         else:
             return None
+
+hasattr(People, '__del__')
+callable(People.__del__)
+
+
+# -----------------------------------------------
+# inhert
+class Superman(People):
+    def __init__(self, birthday, superpower):
+        super().__init__(birthday)
+        print('ha, superman for {}'.format(superpower))
+
+superman = Superman('2019-2-10', 'speed')
+
+print(isinstance(superman, Superman))
+print(isinstance(superman, People))
+print(issubclass(Superman, People))
+
+# -----------------------------------------
+# class's connection with outside (better do not use this tech)
+class InClass():
+    stone = 10
+    
+    def __init__(self, stone):
+        self.stone = stone
+    
+    def show_stone(self):
+        stone = 5  # the stone outside will not be changed. use global variable to realise it.
+        print('show it: ', stone)
+        return self.stone
+    
+    def show_stone2(self):
+        print('show it: ', stone)
+        return self.stone
+        
+stone = InClass(10)
+print(stone)
+print(stone.stone)
+print(stone.show_stone())
+print(stone.show_stone2())
+
+
+
+  

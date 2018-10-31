@@ -50,12 +50,15 @@ random.normalvariate(0,1)
 
 
 # random choice
-print(random.choice(['a','b','c']))
+x = ['a','b','c','d']
 
-print(random.choices(['a','b','c'],k=3))
-print(random.sample(['a','b','c'],3))  # this is do not have replacement
+print(random.choice(x))
 
+print(random.choices(x,k=3))
+print(random.choices(x,k=3, weights=[70,20,10,0]))
+print(random.sample(x,3))  # this is do not have replacement
 
+print(random.shuffle(x))
 
 
 # -----------------------------------------------------------------------------
@@ -68,6 +71,8 @@ dgfakdgja
 "jdlfkaj"
 '''
 print(this_string)   
+print(this_string.find('j'))
+print(this_string.count('j'))
 
 # format string
 print('{0:.3f}'.format(1.0/3))
@@ -79,6 +84,12 @@ print('{0:_^11}'.format('hello'))
 # 基于关键词输出 'Swaroop wrote A Byte of Python'  
 print('{name} wrote {book}'.format(name='Swaroop', book='A Byte of Python'))
 
+name='Swaroop'
+book='A Byte of Python'
+print(f'{name} wrote {book}')
+
+# {}里面还可以代表digits, {: 02} {: , } {: ,.2f}
+# see : https://docs.python.org/3.1/library/string.html
 
 # escape sequence \
 print('what\'s your name')
@@ -135,6 +146,8 @@ gvr + dt.timedelta(seconds=100000)
 
 # list
 a = [1,2,3,4]
+print(a.index(2))
+
 print(a.pop())
 print(1, a)
 print(a.pop(0))
@@ -158,6 +171,7 @@ print(x2)
 
 x2 = filter(lambda x: x>2, x2)  # return qualified ones 
 print(list(x2))
+
 
 
 # tuple
@@ -197,12 +211,33 @@ dikt.keys()
 dikt['A'] = 1          # for one
 dikt.update({'A':1})   # for multiple
 
+dikt.values()
+dikt.keys()
+dikt.items()
+
 
 # sort objects by key
-points = [{'x': 2, 'y': 3},
-          {'x': 4, 'y': 1}]
+points = [{'x0': 2, 'y': 3},
+          {'x1': 4, 'y': 1}]
 points.sort(key=lambda i: i['y'])
 print(points)
+
+# example, how to sort a dic?
+dic = dict(points[0], **points[1])
+sorted(list(dic.items()), key=lambda i: i[1])
+
+
+x = [1,2,3]
+from operator import itemgetter
+f = itemgetter(0)
+g = lambda x: x[i]
+f(x) == g(x)
+
+from operator import attrgetter
+f = attrgetter('__len__')
+g = lambda x: x.__len__
+f(x) == g(x)
+
 
 
 
@@ -238,9 +273,6 @@ print(input_1)
 
 # print out
 print(x, file=f)
-
-
-
 
 
 

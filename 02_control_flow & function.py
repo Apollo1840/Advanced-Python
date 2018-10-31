@@ -107,9 +107,37 @@ numbers = (1,2,3)
 phonebook = {'Jack': 1123,'John':2231,'Inge':1560}
 print(total(a, *numbers, **phonebook))
 
+Maxn,*middlen,minn=sorted([12,3,24,435,46,3422,])
 
 
-# 2.4 decorater
+# 2.4 global and nonlocal
+def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+        print("inner:", x)
+    
+    inner()
+    print("outer:", x)
+
+def outer2():
+    x = "local"  
+    def inner():
+        global x
+        x = "global"
+        print("inner:", x)
+        
+    inner()
+    print("outer:", x)
+
+x = 'global'
+outer()
+outer2()  
+
+
+
+# 2.5 decorater
 # the thought
 def outer_function(msg='hi'):
     def inner_function():

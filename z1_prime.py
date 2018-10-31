@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 31 22:09:11 2018
 
-@author: zouco
-"""
+import math
 
 ####################################################################
 # simplify the program by math:
