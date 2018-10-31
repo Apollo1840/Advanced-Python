@@ -51,9 +51,12 @@ eggs = []
 class chicken():
     sound = 'koko\n'
     
+    def __init__(self):
+        self.name = random.randint(20)
+    
     def lay_egg(self):
         time.sleep(random.choice([1, 1.1, 1.2, 1.3, 10]))
-        print(self.sound)
+        print(self.name + ':' + self.sound)
         eggs.append(1)
 
 
@@ -129,9 +132,5 @@ def test():
 
 
 
-
-
-
-    
     
         
