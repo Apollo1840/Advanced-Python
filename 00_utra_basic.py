@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 31 22:24:20 2018
 
-@author: zouco
-"""
-
-# 0 - ths first thing is how do you learn python by yourself
+# the first thing is how do you learn python by yourself
 a = 'dgadfag'
 dir(a)
 b = [1,2,3]
@@ -15,6 +10,15 @@ dir()
 dir('__builtins__')
 
 help(repr)
+
+
+def add2(x,y):
+    'add two object'
+    
+    print('the sum is', x+y)
+    return x+y
+help(add2)
+
 
 # what is repr and eval:
 a='dgadf dga'
@@ -27,3 +31,16 @@ eval(repr(a))==a
 import math
 dir(math)
 math.ceil(3.4)
+
+
+
+
+
+
+'''
+    to know:
+        1, what is help() and dir(), how to see functions in a library
+        2, how to see build_in functions
+        3, what is repr() and eval()
+
+'''

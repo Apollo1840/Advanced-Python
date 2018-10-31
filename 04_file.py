@@ -1,8 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-@author: zouco
-"""
-
 
 # txt file
 
@@ -72,4 +68,12 @@ with open('... .pkl','r') as f:
     a_dict = pickle.load(f)
 
 
+
+
+'''
+    txt
+    csv
+    json
+    pkl
+'''
 

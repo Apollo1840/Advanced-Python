@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 1 - number and long string
+# 0 - number 
 # v2
 print(36/float(7))
 
@@ -27,6 +27,13 @@ import random
 
 # generate random number
 # 3 uniforms
+'''
+    .random()
+    .uniform()
+    .randint()
+'''
+
+
 for i in range(100):
     print(random.random())  # uniform distribute in [0,1)
 
@@ -36,16 +43,23 @@ for i in range(100):
 for i in range(100):
     print(random.randint(5)) # 0,1,2,3,4,5
 
+##########################
 # normal
 random.normalvariate(0,1)
+##########################
+
 
 # random choice
 print(random.choice(['a','b','c']))
+
 print(random.choices(['a','b','c'],k=3))
 print(random.sample(['a','b','c'],3))  # this is do not have replacement
 
 
 
+
+# -----------------------------------------------------------------------------
+# 1 - string
 
 # long string
 this_string = '''dkljglakg:
@@ -56,8 +70,6 @@ dgfakdgja
 print(this_string)   
 
 # format string
-
-# 对于浮点数 '0.333' 保留小数点(.)后三位
 print('{0:.3f}'.format(1.0/3))
 
 # 使用下划线填充文本，并保持文字处于中间位置
@@ -66,9 +78,6 @@ print('{0:_^11}'.format('hello'))
 
 # 基于关键词输出 'Swaroop wrote A Byte of Python'  
 print('{name} wrote {book}'.format(name='Swaroop', book='A Byte of Python'))
-
-# print function
-print('this has no new line', end='')
 
 
 # escape sequence \
@@ -82,25 +91,37 @@ print\
 ('what is your name')
 
 
+# about print
+# print end
+print('this has no new line', end='')
+
+# print in file
+print(x, file=f)
+
+
 
 
 # --------------------------------------------------------------------------
 # 2 - datetime
 import datetime as dt
+
+# get time
 gvr = dt.date(1993,8,8)
 lauch_time = dt.time(23,12,10)
-
-# print time
-print(gvr)
-print(gvr.strftime('%A'))
-print(gvr.strftime('%B, %y'))
 
 print(dt.datetime.strptime('07/20/1969', '%m/%d/%Y'))
 print(dt.datetime.strptime('07/20/69', '%D'))
 print(dt.datetime.strptime('07:06:05', '%H:%M:%S'))
 print(dt.datetime.strptime('07:06:05', '%X'))
 
+
+# print time
+print(gvr)
 print(gvr.day)
+print(gvr.strftime('%A'))
+print(gvr.strftime('%B, %y'))
+
+# operations on time
 gvr + 100
 gvr + dt.timedelta(days=100)
 gvr + dt.timedelta(seconds=100000)
@@ -115,18 +136,13 @@ gvr + dt.timedelta(seconds=100000)
 # list
 a = [1,2,3,4]
 print(a.pop())
-print(a)
-
-print(a)
+print(1, a)
 print(a.pop(0))
-print(a)
-
-print(a)
+print(2, a)
 print(a.insert(0, 10))
-print(a)
-
+print(3, a)
 print(a.insert(-1, 10))
-print(a)
+print(4, a)
 
 # in
 print(5 in [1,3,4,5])

@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 20 11:47:43 2018
-
-@author: zouco
-"""
 
 import threading
 import time
@@ -14,7 +9,6 @@ def goto_sleep(name, n):
     print('{} has woken up'.format(name))
 
 t = threading.Thread(target=goto_sleep, name='worker01', args=('w1', 5))
-
 
 t.start()
 

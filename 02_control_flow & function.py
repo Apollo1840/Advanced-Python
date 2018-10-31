@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 31 22:18:02 2018
 
-@author: zouco
-"""
+# 1 control flow
 
-# while can working with else
+# 1.1 while 
+'''
+    while else
+'''
+
 number = 23
 running = True
 
@@ -27,22 +28,24 @@ else:
 print('Done')
 
 
-# try
+# 1.2 try
+'''
+    try, except, else, finally
+'''
+
 def divide(x, y):
     try:
         result = x / y
     except ZeroDivisionError:
         print("division by zero!")
-    else:   # run this when successed
+    else:       # run this when successed
         print("result is", result)
-    finally:  # run it whatever happend
+    finally:    # run it whatever happend
         print("executing finally clause")
-
 
 
 # Error
 class ShortInputException(Exception):
-    '''一个由用户定义的异常类'''
     def __init__(self, length, atleast):
         Exception.__init__(self)
         self.length = length
@@ -52,7 +55,6 @@ try:
     text = input('Enter something --> ')
     if len(text) < 3:
         raise ShortInputException(len(text), 3)
-    # 其他工作能在此处继续正常运行
 except EOFError:
     print('Why did you do an EOF on me?')
 except ShortInputException as ex:
@@ -63,9 +65,10 @@ else:
     print('No exception was raised.')        
     
 
+
 # --------------------------------------------------------------------------
-# 4 - function
-# function input
+# 2 - function
+# 2.1 function input
 def cm(f=0,i=0):
     print(f+i)
     return f+i
@@ -81,30 +84,17 @@ f = qua(2,1,3)
 f(2)    
 
 
+# 2.2 function doc
 # you can use __doc__ to descripe your function
 def print_max(x, y):
-    '''打印两个数值中的最大数。
+    'bla bla'
+    pass
 
-    这两个数都应该是整数'''
-    
-    # 如果可能，将其转换至整数类型
-    x = int(x)
-    y = int(y)
-
-    if x > y:
-        print(x, 'is maximum')
-    else:
-        print(y, 'is maximum')
-
-print_max(3, 5)
-print('')
-print(print_max.__doc__)
-print('-------------')
 help(print_max)
+print(print_max.__doc__)
 
 
-
-# multiple args
+# 2.3 multiple args
 def total(a=5, *numbers, **phonebook):
     print('a', a)
     print('numbers', numbers)
@@ -115,16 +105,13 @@ print(total(10,1,2,3,Jack=1123,John=2231,Inge=1560))
 a = 10
 numbers = (1,2,3)
 phonebook = {'Jack': 1123,'John':2231,'Inge':1560}
-print(total(a, numbers, phonebook))
+print(total(a, *numbers, **phonebook))
 
 
 
-
-
-
-# decorater
+# 2.4 decorater
+# the thought
 def outer_function(msg='hi'):
-    
     def inner_function():
         print(msg)
     return inner_function
@@ -134,7 +121,7 @@ my_func()
 my_func2 = outer_function('hallo')
 my_func2()
 
-
+# basic decorator
 # add functionality to existing funciton
 def dfunc(ofunc):
     def wfunc():
@@ -142,20 +129,11 @@ def dfunc(ofunc):
         return ofunc()
     return wfunc
 
-def display():
-    print('hello world')
-    
-dis2 = dfunc(display)
-dis2()
-
-
-# equal to 
-
 @dfunc
 def display():
     print('hello world')
 
-display()
+display()   # when you added decorator, display = dfunc(display)
 
 
 # advanced decorator        
@@ -165,7 +143,7 @@ def dfunc(ofunc):
         return ofunc(*args, **kwargs)
     return wfunc        
 
-
+# decorator class
 class dclass(object):
     
     def __init__(self, ofunc):
@@ -176,6 +154,7 @@ class dclass(object):
         return self.ofunc(*args, **kwargs)
 
 
+# examples 1:
 import time
 def my_timer(ofunc):
     
@@ -188,14 +167,7 @@ def my_timer(ofunc):
     return wfunc
 
 
-
-
-
-
-
-
-
-
+# examples 2:
 # recursive function
 def fibonacci(n):
     if n==0:
@@ -234,3 +206,8 @@ def fibonacci_fast2(n):
         return value
 
 
+
+'''
+    how to use decorator and the lru_cache decorator
+
+'''

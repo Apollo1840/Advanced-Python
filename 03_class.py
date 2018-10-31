@@ -1,17 +1,7 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 31 22:21:21 2018
-
-@author: zouco
-"""
-
-
-
-# --------------------------------------------------------------------------
-# class
-# class can take variable out of definition
 
 # special function
+# this example is funny, I know
 class People():
     population = 0
     
@@ -28,8 +18,13 @@ class People():
     def __len__(self):
         return 'not konw'
     
+    def __add__(self, other):
+        return People(self.birthday + other.birthday)
+    
     def __getitem__(self, key):
         if key=='birthday':
             return self.birthday
+        elif key=='age':
+            return 'noknown'
         else:
             return None
