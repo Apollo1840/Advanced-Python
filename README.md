@@ -51,11 +51,7 @@ random number:
 #### -- string --:
 string function: find, count
 
-number string, 
-
-long string, 
-
-format string, 
+number string, long string, format string, 
 
 escape sequence,
 
@@ -69,19 +65,19 @@ Format: dt.datetime.strptime(str, re), DT.strftime(re)
 dt.timedelta
 
 #### -- data structure --:
-list: 
+##### list: 
 
-\t index, pop, insert, append & extend, filter & map
+index, pop, insert, append & extend, filter & map
  
-tuple: 
+##### tuple: 
 
-\t tuple sign, namedtuple
+tuple sign, namedtuple
 
-set: 
+##### set: 
 
-\t add, remove, discard, intersection, union
+add, remove, discard, intersection, union
 
-dictionary: 
+##### dictionary: 
 
 keys(), values(), items(), update, get, sort
 
@@ -89,4 +85,23 @@ keys(), values(), items(), update, get, sort
 
 #### -- input & output --
 
-    
+### 02_control_flow_and_function.py
+while else
+
+try except else finally
+
+how to use decorator and the lru_cache decorator
+
+### 03_class.py
+
+special function
+
+inherit
+
+variable scope
+
+### 04_advance.py
+
+
+
+
