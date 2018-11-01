@@ -33,6 +33,7 @@ hasattr(People, '__del__')
 callable(People.__del__)
 
 
+
 # -----------------------------------------------
 # inhert
 class Superman(People):
@@ -45,6 +46,39 @@ superman = Superman('2019-2-10', 'speed')
 print(isinstance(superman, Superman))
 print(isinstance(superman, People))
 print(issubclass(Superman, People))
+
+
+# -----------------------------------------------
+# property(getter), setter, deleter
+class Employee():
+    
+    def __init__(self, firstname, lastname):
+        self.fname = firstname
+        self.lname = lastname
+    
+    @property
+    def fullname(self):
+        return ' '.join(self.fname, self.lname)
+    
+    @fullname.setter
+    def fullname(self, fullname):
+        self.fname, self.lname = fullname.split()
+    
+    @fullname.deleter
+    def fullname(self):
+        self.fname = None
+        self.lname = None
+        print('Persons name missed')
+
+
+p = Employee('An','Ng')
+print(p.fullname)
+p.fullname = 'Andrew Ng'
+print(p.fname)
+del p.fullname
+print(p.lname)
+
+
 
 # -----------------------------------------
 # class's connection with outside (better do not use this tech)

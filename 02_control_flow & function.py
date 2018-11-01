@@ -110,7 +110,8 @@ print(total(a, *numbers, **phonebook))
 Maxn,*middlen,minn=sorted([12,3,24,435,46,3422,])
 
 
-# 2.4 global and nonlocal
+# 2.4 variable scoup 
+# global and nonlocal
 def outer():
     x = "local"
     def inner():

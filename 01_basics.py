@@ -189,6 +189,15 @@ def tuple_output():
 a,b = tuple_output()
 a = tuple_output()
 
+# readerable tuple
+from collections import namedtuple
+color = (255,255,0) # regular tuple
+Color = namedtuple('Color', ['r','g','b'])
+color = Color(255,255,0)
+# color = Color(r=255,g=255,b=0)
+print(color.r)
+
+
 
 # set
 set1=set()
@@ -244,7 +253,7 @@ f(x) == g(x)
 # --------------------------------------------------------------------------
 # 5 - generator
 
-# yield
+# yield (with for or while)
 def generator():
     for i in range(10):
         yield i
