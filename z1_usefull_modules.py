@@ -5,6 +5,7 @@ import sys
 print(sys.argv[0])
 print(sys.path)
 # sys.path.append()
+sys.getsizeof(sys.maxsize)
 
 
 

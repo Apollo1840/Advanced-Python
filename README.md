@@ -24,40 +24,61 @@ It is designed for the the programmer who already knows the basics of programmin
 
 ## the overview of the py files
 
-#### 00_ultra_basics.py
+### 00_ultra_basics.py
 1, what is help() and dir(), how to see functions in a library
 2, how to see built_in functions
 3, what is repr() and eval()
 
-#### 01_basics.py
+### 01_basics.py
 
 ##### number:
 int: maximum_int, boolean_int
+
 float: division
+
 complex number
 
 random number: 
-    .random()
-    .uniform()
-    .randint()
-    .normalvariate()
-    
-    .choice
-    .choices
-    .sample
-    
-    .shuffle
+    * .random()
+    * .uniform()
+    * .randint()
+    * .normalvariate()
+    * .choice
+    * .choices
+    * .sample
+    * .shuffle
 
 ##### string:
 string function: find, count
-number string, long string, format string, escape sequence
+
+number string, 
+
+long string, 
+
+format string, 
+
+escape sequence,
+
+about print
+
+
+##### datetime
+Init: dt.date and dt.time
+
+Format: dt.datetime.strptime(str, re), DT.strftime(re)
+
+dt.timedelta
 
 ##### data structure
-list:
-tuple:
-set:
-dictionary:
-generator:
+list: index, pop, insert, append & extend, filter & map
+ 
+tuple: tuple sign, namedtuple
+
+set: add, remove, discard, intersection, union
+
+dictionary: keys(), values(), items(), update, get, sort
+
+generator
 
 ##### input & output:
 

@@ -1,6 +1,16 @@
 # -*- coding: utf-8 -*-
 
 # 0 - number 
+
+# 0.1 int
+import sys
+print(sys.maxsize)  # the maxint of v3
+
+# non-trial -> True
+int(True)
+bool(0)
+
+# 0.2 float
 # v2
 print(36/float(7))
 
@@ -9,28 +19,28 @@ print(36/7)
 print(36%7)
 print(36//7)
 
-import sys
-print(sys.maxsize)  # the maxint of v3
-
+# 0.3 complex
 # complex
 y = 1+2j
 type(y)
 print(y.real)
 print(y.imag)
 
-
-# non-trial -> True
-int(True)
-
-# random
+# 0.4 random
 import random
 
 # generate random number
 # 3 uniforms
 '''
-    .random()
-    .uniform()
-    .randint()
+    * .random()
+    * .uniform()
+    * .randint()
+    * .normalvariate()
+    * .choice
+    * .choices
+    * .sample
+    * .shuffle
+    
 '''
 
 
@@ -62,6 +72,7 @@ print(random.shuffle(x))
 print(x)
 
 
+
 # -----------------------------------------------------------------------------
 # 1 - string
 # number fill
@@ -78,29 +89,31 @@ print(this_string.find('j'))
 print(this_string.count('j'))
 
 # format string
+# print format
 print('{0:.3f}'.format(1.0/3))
 
-# 使用下划线填充文本，并保持文字处于中间位置
-# 使用 (^) 定义 '___hello___'字符串长度为 11
+# 使用下划线填充文本，并保持文字处于中间位置, 使用 (^) 定义 '___hello___'字符串长度为 11
 print('{0:_^11}'.format('hello'))
+# {}里面还可以代表digits, {: 02} {: , } {: ,.2f}
+# see : https://docs.python.org/3.1/library/string.html
 
-# 基于关键词输出 'Swaroop wrote A Byte of Python'  
+# usage format
 print('{name} wrote {book}'.format(name='Swaroop', book='A Byte of Python'))
-
+# or
 name='Swaroop'
 book='A Byte of Python'
 print(f'{name} wrote {book}')
 
-# {}里面还可以代表digits, {: 02} {: , } {: ,.2f}
-# see : https://docs.python.org/3.1/library/string.html
 
 # escape sequence \
 print('what\'s your name')
 print(r'what\'s your name')
 
+# break string
 print('what is your\
 name')
 
+# break command line
 print\
 ('what is your name')
 
@@ -111,7 +124,6 @@ print('this has no new line', end='')
 
 # print in file
 print(x, file=f)
-
 
 
 
@@ -204,10 +216,8 @@ print(color.r)
 
 # set
 set1=set()
-
 set1.add(1)
 set1.remove(1)
-
 set1.discard(2) # without error
 
 set2={3,4,5}
@@ -238,7 +248,7 @@ print(points)
 dic = dict(points[0], **points[1])
 sorted(list(dic.items()), key=lambda i: i[1])
 
-
+# do need to remember
 x = [1,2,3]
 from operator import itemgetter
 f = itemgetter(0)
