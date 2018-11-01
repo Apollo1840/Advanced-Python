@@ -31,14 +31,15 @@ It is designed for the the programmer who already knows the basics of programmin
 
 ### 01_basics.py
 
-##### number:
-int: maximum_int, boolean_int
+#### number:
+##### int: 
+    maximum_int, boolean_int
 
-float: division
+    float: division
 
-complex number
+    complex number
 
-random number: 
+##### random number: 
     * .random()
     * .uniform()
     * .randint()
@@ -48,38 +49,45 @@ random number:
     * .sample
     * .shuffle
 
-##### string:
-string function: find, count
+#### string:
+##### string function: 
+    find, count
 
-number string, 
+##### number string, 
 
-long string, 
+##### long string, 
 
-format string, 
+##### format string, 
 
-escape sequence,
+##### escape sequence,
 
-about print
+##### about print
+    end, output
 
+#### datetime
+##### Init: 
+    dt.date and dt.time
 
-##### datetime
-Init: dt.date and dt.time
+##### Format: 
+    dt.datetime.strptime(str, re), DT.strftime(re)
 
-Format: dt.datetime.strptime(str, re), DT.strftime(re)
+##### dt.timedelta
 
-dt.timedelta
-
-##### data structure
-list: index, pop, insert, append & extend, filter & map
+#### data structure
+##### list: 
+    index, pop, insert, append & extend, filter & map
  
-tuple: tuple sign, namedtuple
+##### tuple: 
+    tuple sign, namedtuple
 
-set: add, remove, discard, intersection, union
+##### set: 
+    add, remove, discard, intersection, union
 
-dictionary: keys(), values(), items(), update, get, sort
+##### dictionary: 
+    keys(), values(), items(), update, get, sort
 
-generator
+##### generator
 
-##### input & output:
+#### input & output:
 
     
