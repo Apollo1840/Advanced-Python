@@ -6,10 +6,45 @@ dict(zip('abcd', range(4)))
 
 
 
+# duplicates
+[0]*10
+'a'*10
+
+[[0]]*10  # be carefull, those [0] share same id
+# better use [[0] for _ in range(10)]
+
+
+
+# multi assign
+a,b,c=1,2,3
+a,b,c=[1,2,3]
+a == a
+
+
+
 # alternative value
 a=4
 feedback = 'yes' if a>5 else 'no'
 print(feedback)
+
+
+
+# chain logic
+a=4
+0 < a < 5
+
+
+
+# group logic
+all([True, True, False])
+any([True, True, False])
+
+
+
+# enumerate
+str1 = ['abcd','abcd','abcd','abcd']
+for i,s in enumerate(str1):  # [(0, 'abcd'),(1, 'abcd'),(2, 'abcd'),(3, 'abcd')]
+    print(s[i])
 
 
 
