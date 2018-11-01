@@ -22,7 +22,7 @@ It is designed for the the programmer who already knows the basics of programmin
     * Advanced data structure or algorithm.
 
 
-## the overview of the py files
+## the overview of the .py files
 
 ### 00_ultra_basics.py
 1, what is help() and dir(), how to see functions in a library
@@ -87,7 +87,7 @@ keys(), values(), items(), update, get, sort
 
 ### 02_control_flow_and_function.py
 while else
-
+  
 try except else finally
 
 how to use decorator and the lru_cache decorator
@@ -100,8 +100,15 @@ inherit
 
 variable scope
 
-### 04_advance.py
+### 04_file_and_logger.py
+### 05_unittest.py
+### 06_advance.py
+exchage variable
 
+location and value
 
+changable and unchangeble
 
+__new__
 
+context

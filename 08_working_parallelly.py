@@ -46,7 +46,7 @@ class chicken():
     sound = 'koko\n'
     
     def __init__(self):
-        self.name = random.randint(20)
+        self.name = str(random.randint(1,20))
     
     def lay_egg(self):
         time.sleep(random.choice([1, 1.1, 1.2, 1.3, 10]))
@@ -126,5 +126,51 @@ def test():
 
 
 
+   
     
+
+#--------------------
+total = 4
+
+def create_item():
+    global total
+    for i in range(10):
+        time.sleep(1)
+        print('add item')
+        total += 1
+    print('creation is down')
+
+def create_item2():
+    global total
+    for i in range(7):
+        time.sleep(1)
+        print('add item 2')
+        total += 1
+    print('creation is down')
+
+def limit_item():
+    global total
+    while True:
+        if total>5:
+            print('overload')
+            total-=3
+            print('sub 3')
+        else:
+            time.sleep(1)
+            print('waiting')
+
+
+c1 = threading.Thread(target= create_item)
+c2 = threading.Thread(target= create_item2)            
+limitor = threading.Thread(target = limit_item, daemon=True) # daemon works in command line
+
+c1.start()
+c2.start()
+limitor.start()
+
+c1.join()
+c2.join()
+# limitor.join()  limitor will terminate after the program over
+
+print('over', total)
         
