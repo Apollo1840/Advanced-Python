@@ -59,10 +59,13 @@ print(random.choices(x,k=3, weights=[70,20,10,0]))
 print(random.sample(x,3))  # this is do not have replacement
 
 print(random.shuffle(x))
+print(x)
 
 
 # -----------------------------------------------------------------------------
 # 1 - string
+# number fill
+'2'.zfill(3)
 
 # long string
 this_string = '''dkljglakg:

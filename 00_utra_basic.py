@@ -41,7 +41,7 @@ math.ceil(3.4)
 '''
     to know:
         1, what is help() and dir(), how to see functions in a library
-        2, how to see build_in functions
+        2, how to see built_in functions
         3, what is repr() and eval()
 
 '''
