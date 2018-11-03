@@ -200,7 +200,6 @@ x2 = filter(lambda x: x>2, x2)  # return qualified ones
 print(list(x2))
 
 
-
 # tuple
 # tuple is smaller
 import sys
@@ -215,15 +214,6 @@ def tuple_output():
     return 1,2    # or return (1,2)
 a,b = tuple_output()
 a = tuple_output()
-
-# readerable tuple
-from collections import namedtuple
-color = (255,255,0) # regular tuple
-Color = namedtuple('Color', ['r','g','b'])
-color = Color(255,255,0)
-# color = Color(r=255,g=255,b=0)
-print(color.r)
-
 
 
 # set
@@ -260,17 +250,6 @@ print(points)
 dic = dict(points[0], **points[1])
 sorted(list(dic.items()), key=lambda i: i[1])
 
-# do need to remember
-x = [1,2,3]
-from operator import itemgetter
-f = itemgetter(0)
-g = lambda x: x[i]
-f(x) == g(x)
-
-from operator import attrgetter
-f = attrgetter('__len__')
-g = lambda x: x.__len__
-f(x) == g(x)
 
 
 '''
@@ -280,7 +259,7 @@ f(x) == g(x)
  
     ##### tuple: 
 
-    tuple sign, namedtuple
+    tuple sign
 
     ##### set: 
 
