@@ -94,7 +94,7 @@ print('{0:.3f}'.format(1.0/3))
 
 # 使用下划线填充文本，并保持文字处于中间位置, 使用 (^) 定义 '___hello___'字符串长度为 11
 print('{0:_^11}'.format('hello'))
-# {}里面还可以代表digits, {: 02} {: , } {: ,.2f}
+# others like {: 02} {: , } {: ,.2f}
 # see : https://docs.python.org/3.1/library/string.html
 
 # usage format
@@ -132,20 +132,22 @@ print(x, file=f)
 import datetime as dt
 
 # get time
-gvr = dt.date(1993,8,8)
+gvr = dt.date(1993,8,8) # year month day
 lauch_time = dt.time(23,12,10)
 
+# date format
+# see: https://www.w3schools.com/python/python_datetime.asp
 print(dt.datetime.strptime('07/20/1969', '%m/%d/%Y'))
-print(dt.datetime.strptime('07/20/69', '%D'))
 print(dt.datetime.strptime('07:06:05', '%H:%M:%S'))
 print(dt.datetime.strptime('07:06:05', '%X'))
 
 
 # print time
 print(gvr)
-print(gvr.day)
 print(gvr.strftime('%A'))
 print(gvr.strftime('%B, %y'))
+print(gvr.day == gvr.strftime('%d'))
+
 
 # operations on time
 gvr + 100
@@ -154,6 +156,16 @@ gvr + dt.timedelta(seconds=100000)
 
 (dt.datetime.today()-gvr).days
 
+
+'''
+    init: dt.date and dt.time
+
+    format: dt.datetime.strptime(str, re), DT.strftime(re) or simplier re.day
+
+    delta: dt.timedelta
+
+
+'''
 
 
 # --------------------------------------------------------------------------
@@ -260,6 +272,25 @@ f = attrgetter('__len__')
 g = lambda x: x.__len__
 f(x) == g(x)
 
+
+'''
+    ##### list: 
+
+    index, pop, insert, append & extend, filter & map
+ 
+    ##### tuple: 
+
+    tuple sign, namedtuple
+
+    ##### set: 
+
+    add, remove, discard, intersection, union
+
+    ##### dictionary: 
+
+    keys(), values(), items(), update, get, sort
+
+'''
 
 
 

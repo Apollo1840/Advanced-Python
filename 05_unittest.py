@@ -7,6 +7,18 @@ import os
 sys.path.append(os.getcwd()+'\\tools')
 from plus_substract import plus, substract
 
+
+class simpleTestCase(unittest.TestCase):
+    
+    def test_sub(self):
+        self.assertEqual(substract(2,2),0)
+        self.assertEqual(substract(2,1),1)
+        
+        with self.assertRaise(TypeError):
+            substract(1,'b')
+    
+
+# setUp and tearDown
 class DummyTestCase(unittest.TestCase):
     
     @classmethod

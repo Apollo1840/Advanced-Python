@@ -36,7 +36,7 @@ a=4
 
 
 # group logic
-all([True, True, False])
+all([True, True, False])  
 any([True, True, False])
 
 

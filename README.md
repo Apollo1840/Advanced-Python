@@ -58,11 +58,11 @@ escape sequence,
 about print: end, output
 
 #### -- datetime -- :
-Init: dt.date and dt.time
+init: dt.date and dt.time
 
-Format: dt.datetime.strptime(str, re), DT.strftime(re)
+format: dt.datetime.strptime(str, re), DT.strftime(re)
 
-dt.timedelta
+delta: dt.timedelta
 
 #### -- data structure --:
 ##### list: 
@@ -112,3 +112,10 @@ changable and unchangeble
 __new__
 
 context
+
+
+
+
+## TO DO
+more on unittest
+more on threading

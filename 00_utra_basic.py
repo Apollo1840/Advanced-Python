@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # the first thing is how do you learn python by yourself
+# dir
 a = 'dgadfag'
 dir(a)
 b = [1,2,3]
@@ -9,15 +10,18 @@ dir(b)
 dir()
 dir('__builtins__')
 
-help(repr)
 
 
+# help
 def add2(x,y):
     'add two object'
     
     print('the sum is', x+y)
     return x+y
 help(add2)
+
+help(repr)
+
 
 
 # what is repr and eval:

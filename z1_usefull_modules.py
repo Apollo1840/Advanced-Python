@@ -63,6 +63,13 @@ print('duration: ', time.time()-tic)
 
 
 # -------------------------------------------------
+# list counter
+from collections import Counter
+a = ['1', '2', '3', '2', '3', '4', '2', '3', '4']
+c = Counter(a)
+print(c.most_common(1))
+
+
 # readerable tuple
 from collections import namedtuple
 color = (255,255,0) # regular tuple
@@ -71,11 +78,6 @@ color = Color(255,255,0)
 # color = Color(r=255,g=255,b=0)
 print(color.r)
 
-
-from collections import Counter
-a = ['1', '2', '3', '2', '3', '4', '2', '3', '4']
-c = Counter(a)
-print(c.most_common(1))
 
 
 
@@ -100,3 +102,16 @@ frequency = 2500  # Set Frequency To 2500 Hertz
 duration = 1000  # Set Duration To 1000 ms == 1 second
 winsound.Beep(frequency, duration)
 
+
+# -------------------------------------------------
+# do need to remember
+x = [1,2,3]
+from operator import itemgetter
+f = itemgetter(0)
+g = lambda x: x[i]
+f(x) == g(x)
+
+from operator import attrgetter
+f = attrgetter('__len__')
+g = lambda x: x.__len__
+f(x) == g(x)

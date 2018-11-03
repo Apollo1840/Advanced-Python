@@ -26,7 +26,7 @@ else:
 
 print('Done')
 
-
+# !! the else will not run, if you use break
 
 
 # 1.2 try

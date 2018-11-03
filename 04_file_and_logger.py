@@ -35,8 +35,10 @@ import json
 
 d = {'first':1, 'second':2, 'third': 3}
 
+# .json_file  <--->  dictionary  <---> Json_string
+
 # create and write
-with open('material/a_json_file.txt','w') as f:   
+with open('material/a_json_file.json','w') as f:   
     json.dump(d,f)
 
 # read a json
@@ -49,7 +51,7 @@ json.dumps(a_dict, ensure_ascii = False, sort_keys=True, indent=4) # this will o
 # json.dumps can also be used as a method to show dictionary
    
 # if you got json text, you can also change it to a dict
-json.loads(a_string_of_json_file) # this will output a dict  
+dikt = json.loads(a_string_of_json_file) # this will output a dict  
     
 
 
@@ -92,8 +94,20 @@ logging.basicConfig(filename='logger01.log', level = logging.DEBUG)
 logger1=logging.getLogger()
 logger1.info('what')
 
-# where to find log_formats: ...
+# where to find log_formats: https://docs.python.org/3/library/logging.html
 log_format = '%(levelname)s %(asctime)s - %(message)s'
 logging.basicConfig(filename='logger01.log',  file_mode = 'a', level = logging.DEBUG, format = log_format)
 logger1=logging.getLogger()
 logger1.info('what')
+
+
+'''
+    
+    Info, debug, warning, error, critical    
+    
+    logging.basicConfig()
+        filename
+        level
+        format
+    logging.getLogger()
+'''
