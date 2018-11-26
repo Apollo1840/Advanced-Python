@@ -70,7 +70,7 @@ np.floor(xn)
 # 2.1 matrix operations
 
 # 1) index
-print(A[2,2])
+print(A[1,2])
 print(A[(1,2)])
 print(A[:,3])
 
@@ -99,13 +99,14 @@ print(b)
 # important: when one of the input lack dimension, it will be adaptive
 a = np.random.randn(5)
 a.shape
+print(a.T)
 print(np.dot(a.T,a))
 
 
 
 # 4) stack and split
 a = np.floor(10*np.random.random((2, 12)))
-b = np.floor(10*np.random.random((2, 12))
+b = np.floor(10*np.random.random((2, 12)))
 print('a\n', a)
 print('b\n', b)
 
@@ -135,11 +136,12 @@ np.sum(A, axis=0)
 print(A / np.sum(A,axis=0))
 
 # list of boolean
-np.where([True, True, False, True])
-np.where([True, True, False, True], range(4), range(0,40,10)) # another ways to use np.where
+logic = [True, True, False, True]
+np.where(logic)
+np.where(logic, range(4), range(0,40,10)) # another ways to use np.where
 np.nonzero([0, 2, 0, 1]) # it is better to not use it on boolean
 
-
+np.logical_not(logic)
 
 
 
@@ -175,10 +177,14 @@ np.c_[A,A]
 
 
 # np.meshgrid
+xx, yy = np.meshgrid(A,A)
+all_node = zip(xx.ravel(),yy.ravel())
+print(list(all_node))
 
 # np.all
 np.all([True, False])
 np.any([True, False])
+
 # np.apply_along_axis 
 np.apply_along_axis(lambda x: np.sum(x), 0, A.reshape(2,3))
 
@@ -224,8 +230,9 @@ idx = [[1,2,-1],[1,2,-1]]
 print(np.take(a, idx))
 
 # alter value
-np.put(a, [0], [10])
-A
+print(a)
+np.put(a, [0,-1], [10,20])  # put 10 in position 0, put 20 to the last position
+print(a)
 
 
 
@@ -233,17 +240,22 @@ A
 # matrix operation
 A @ B1  # np.dot
 
-
 np.repeat([1,2,3],5).reshape(3,5)
+
+
 
 # newaxis 
 from numpy import newaxis
+# it is None
+
 a = np.arange(10)
 print(a.shape)
 b = a[newaxis,:]
 print(b.shape)
+
 b = a[:, newaxis]
 print(b.shape)
+
 a = a[:-1]
 A = a.reshape(3,3)
 B = A[:,newaxis,:]
@@ -252,9 +264,13 @@ print(B)
 np.squeeze(A)
 
 
-np.ptp(range(10)) # value_range
+np.ptp(range(10)) # value_range (max-min)
+np.ptp(np.ones(10))
+np.ptp([[1,2,3],[2,3,4]], axis=0)
+np.ptp([[1,2,3],[2,3,4]], axis=1)
 
 
+# return the indices where elements should be inserted to maintain order.
 np.searchsorted(range(10),5)  # find the position of 5
 np.searchsorted(range(10),5, side = 'left')  # left is empty boundary
 

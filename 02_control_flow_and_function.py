@@ -244,3 +244,66 @@ def fibonacci_fast2(n):
     how to use decorator and the lru_cache decorator
 
 '''
+
+
+
+def f(i=[]):
+    # print(id(i))
+    i.append(1)
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+
+def f(i=[]):
+    j=i
+    # print(id(i))
+    j.append(1)
+    # print(id(i))
+    return j
+
+print(f())
+print(f())
+
+
+def f(i=[]):
+    # print(id(i))
+    i += [1]
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+def f(i=[]):
+    # print(id(i))
+    i = i + [1]
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+
+def f(i=1):
+    # print(id(i))
+    i+=1
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+
+def f(i=None):
+    if i is None:
+        i=[]
+    # print(id(i))
+    i.append(1)
+    # print(id(i))
+    return i
+
+print(f())
+print(f())

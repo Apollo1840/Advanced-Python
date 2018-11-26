@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # fast dict
+dict(a=0, b=1, c=2, d=3)
 dict(zip('abcd', range(4)))
 # {'a': 0, 'b': 1, 'c': 2, 'd': 3}
 
@@ -16,6 +17,12 @@ dict(zip('abcd', range(4)))
 
 
 # multi assign
+a = b = c =2
+print(id(a), id(b)) # same
+b += 2
+print(id(a), id(b))
+print(a, b)
+
 a,b,c=1,2,3
 a,b,c=[1,2,3]
 a == a
@@ -64,3 +71,4 @@ flat([1,2,[3,[4,5]]])
 # pythonic list
 list_of_list= [[1,2,3],[4,5],[5,6,7,8]]
 print([y for x in list_of_list for y in x])
+

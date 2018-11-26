@@ -174,6 +174,8 @@ gvr + dt.timedelta(seconds=100000)
 # list
 a = [1,2,3,4]
 print(a.index(2))
+print(a.remove(2))
+print(a)
 
 print(a.pop())
 print(1, a)
@@ -230,6 +232,7 @@ print(set1.intersection(set2))  # set1 & set2
 
 # dictionary
 dikt = {}
+dikt = dict(a=1, b=2, c=3)
 dikt.get('dg', None)
 dikt.keys()
 dikt['A'] = 1          # for one
@@ -239,6 +242,8 @@ dikt.values()
 dikt.keys()
 dikt.items()
 
+dikt.pop('a')
+dikt.popitem()
 
 # sort objects by key
 points = [{'x0': 2, 'y': 3},
