@@ -306,6 +306,7 @@ def is_prime(n):
     if n==2:
         return True
     
+    # even no
     if n > 2 and n%2 == 0:
         return False
     
@@ -326,6 +327,9 @@ def countPrimes(n):
         if primes[i]:
             primes[i * i: n: i] = [False] * len(primes[i * i: n: i])  # this is faster than for loop
     return sum(primes)
+
+
+
 
 
 # anagram
@@ -432,10 +436,10 @@ def twosum(nums, target):
         return False
     buff_dict = {}  # {7:1}
     for i in range(len(nums)):
-        if nums[i] in buff_dict:
-            return [buff_dict[nums[i]], i]
-        else:
+        if nums[i] not in buff_dict:
             buff_dict[target - nums[i]] = i
+        else:
+            return [buff_dict[nums[i]], i]
     return False
 
 
@@ -457,7 +461,12 @@ class Solution:
                     i += 1
             else:
                 return [1]+digits
-        
+
+
+'''
+    trick : check last 9
+'''
+
         
 '''
    itertools..
@@ -473,11 +482,6 @@ for digit, group in itertools.groupby('112223331112223333'):
 # DP
 class Solution:
     def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        
         if n==1:
             return 1
         dp = [1,2]
@@ -488,10 +492,6 @@ class Solution:
 
 class Solution:
     def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         if len(nums)==0:
             return 0
         if len(nums)==1:
@@ -503,10 +503,6 @@ class Solution:
 
 class Solution:
     def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         if len(nums)==0:
             return 0
         if len(nums)==1:
@@ -529,10 +525,6 @@ s.rob([1,8,3,4,10,2])
 
 class Solution:
     def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
         i = 0
         while(True): 
             for sstr in strs:
@@ -556,12 +548,7 @@ list(zip(*lst))
 
 
 class Solution:
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
-        
+    def longestCommonPrefix(self, strs):       
         shortest = min(strs, key = len)
         for i in range(len(shortest)): 
             for sstr in strs:
@@ -574,12 +561,11 @@ class Solution:
         return strs[0][:i]   
     
     
+    
+    
+    
 class Solution:
     def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
         
         lst = [c.lower() for c in s if (97 <= ord(c) <= 122 or 65 <= ord(c) <= 90)]
         print(lst)
@@ -592,6 +578,11 @@ class Solution:
         return s1 == s2
 s=Solution()
 s.isPalindrome('OP') 
+
+
+
+
+
 
 
 symbol = ['I','V','X','L','C','D','M']
@@ -615,10 +606,6 @@ def romanToInt(s):
 romanToInt('XIV')
 
 def romanToInt(s):
-    """
-    :type s: str
-    :rtype: int
-    """
     if len(s)==0:
         return 0
     
@@ -643,4 +630,4 @@ class Solution:
         return z + self.roman[s[-1]]
     
     
-        return sum([self.roman[s[i]]*(-1 if self.roman[s[i]] < self.roman[s[i+1]] else 1) for i in range(0, len(s) - 1)]) + self.roman[s[-1]]
+        # return sum([self.roman[s[i]]*(-1 if self.roman[s[i]] < self.roman[s[i+1]] else 1) for i in range(0, len(s) - 1)]) + self.roman[s[-1]]
