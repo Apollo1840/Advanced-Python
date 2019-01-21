@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-# math
-import math
-dir(math)
-math.ceil(3.4)
+
 
 
 
