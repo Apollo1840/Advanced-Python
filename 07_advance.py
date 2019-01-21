@@ -23,13 +23,19 @@ print(a==b)
 print(a is b)
 print(id(a)==id(b))
 
-# use is None.
+a = 3
+b = 3
+print(a==b)
+print(a is b)
+print(id(a)==id(b))
 
-class Baibianguai():
+
+# use is None.
+class BaiBianGuai():
     def __eq__(self, other):
         return True
 
-bbg = Baibianguai()
+bbg = BaiBianGuai()
 print(bbg == None)
 print(bbg is None)
 
@@ -45,13 +51,19 @@ print(id(a))
 a.append(4)
 print(id(a))
 
+a+=list(range(100))
+print(id(a))
+
 b=a
 b[0]=10
 print(a)
 
-b=a[:]
+b=a[:]  # simplified copy
 b[0]=100
 print(a)
+
+
+
 
 # very interesting facts:
 class Group():
@@ -73,7 +85,7 @@ print(g1.members)
 print(g2.members)
 # they sames to share the group list
 # the reason is default members, it takes cache
-# solution;
+# solution:
 
 class Group():
     def __init__(self, members=None):
@@ -125,6 +137,8 @@ class Singleton():
 s1 = Singleton()
 s2 = Singleton()
 s1 is s2
+
+#只要程序不结束, Singleton永远指向同一个object
 
 # factory mode:
 class Fruit():

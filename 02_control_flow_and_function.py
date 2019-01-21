@@ -6,23 +6,24 @@
 '''
     while else
 '''
+# example: jumping check
+# 0, 1, 3, 7, 15, 31
+numbers = range(1000)
+index = 0
+end_index = 100
+wanted = 15
 
-number = 23
-running = True
-
-while running:
-    guess = int(input('Enter an integer : '))
-
-    if guess == number:
-        print('Congratulations, you guessed it.')
-        running = False
-    elif guess < number:
-        print('No, it is a little higher than that.')
-    else:
-        print('No, it is a little lower than that.')
+while index < end_index:
+    print(numbers[index])
+    if numbers[index]==wanted:
+        print("we find it")
+        break
+        
+    index = index + numbers[index] + 1
+    
 else:
-    # do it while while loop ends
-    print('The while loop is over.')
+    # do it while while-loop ends (without break)
+    print('no within end_index.')
 
 print('Done')
 
@@ -74,11 +75,74 @@ else:
 # 2 - function
 # 2.1 function input
 def cm(f=0,i=0):
-    print(f+i)
-    return f+i
+    print(f+i*2)
+    return f+i*2
 
 cm(3)
 cm(i=1)
+
+# default assign acts in a static way
+# this i will always assign to the same loc
+def f(i=[]):
+    # print(id(i))
+    i.append(1)
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+# some false solution to this problem:
+def f(i=[]):
+    j=i
+    # print(id(i))
+    j.append(1)
+    # print(id(i))
+    return j
+
+print(f())
+print(f())
+
+
+def f(i=[]):
+    # print(id(i))
+    i += [1]
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+# true solution should change the loc
+def f(i=None):
+    if i is None:
+        i=[]
+    # print(id(i))
+    i.append(1)
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+def f(i=[]):
+    # print(id(i))
+    i = i + [1]
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
+
+# now how about:
+def f(i=1):
+    # print(id(i))
+    i+=1
+    # print(id(i))
+    return i
+
+print(f())
+print(f())
 
 # use lambda to create function generator
 def qua(a,b,c):
@@ -141,7 +205,6 @@ outer()
 outer2()  
 
 
-
 # 2.5 decorater
 # the thought
 def outer_function(msg='hi'):
@@ -195,9 +258,19 @@ def my_timer(ofunc):
         t1 = time.time()
         result = ofunc(*args, **kwargs)
         t2 = time.time() - t1
-        print('[} ran in: {} sec'.format(ofunc.__name__, t2))
+        print('{} ran in: {} sec'.format(ofunc.__name__, t2))
         return result
+    
     return wfunc
+
+
+
+@my_timer
+def somejob():
+    print(sum(range(10000000)))
+
+somejob()
+
 
 
 # examples 2:
@@ -247,63 +320,4 @@ def fibonacci_fast2(n):
 
 
 
-def f(i=[]):
-    # print(id(i))
-    i.append(1)
-    # print(id(i))
-    return i
 
-print(f())
-print(f())
-
-
-def f(i=[]):
-    j=i
-    # print(id(i))
-    j.append(1)
-    # print(id(i))
-    return j
-
-print(f())
-print(f())
-
-
-def f(i=[]):
-    # print(id(i))
-    i += [1]
-    # print(id(i))
-    return i
-
-print(f())
-print(f())
-
-def f(i=[]):
-    # print(id(i))
-    i = i + [1]
-    # print(id(i))
-    return i
-
-print(f())
-print(f())
-
-
-def f(i=1):
-    # print(id(i))
-    i+=1
-    # print(id(i))
-    return i
-
-print(f())
-print(f())
-
-
-def f(i=None):
-    if i is None:
-        i=[]
-    # print(id(i))
-    i.append(1)
-    # print(id(i))
-    return i
-
-print(f())
-print(f())

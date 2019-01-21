@@ -16,6 +16,7 @@ print(36/float(7))
 
 # v3
 print(36/7)
+
 print(36%7)
 print(36//7)
 
@@ -25,52 +26,6 @@ y = 1+2j
 type(y)
 print(y.real)
 print(y.imag)
-
-# 0.4 random
-import random
-
-# generate random number
-# 3 uniforms
-'''
-    * .random()
-    * .uniform()
-    * .randint()
-    * .normalvariate()
-    * .choice
-    * .choices
-    * .sample
-    * .shuffle
-    
-'''
-
-
-for i in range(100):
-    print(random.random())  # uniform distribute in [0,1)
-
-for i in range(100):
-    print(random.uniform(1,10)) # uniform distribute in [1,10)
-    
-for i in range(100):
-    print(random.randint(5)) # 0,1,2,3,4,5
-
-##########################
-# normal
-random.normalvariate(0,1)
-##########################
-
-
-# random choice
-x = ['a','b','c','d']
-
-print(random.choice(x))
-
-print(random.choices(x,k=3))
-print(random.choices(x,k=3, weights=[70,20,10,0]))
-print(random.sample(x,3))  # this is do not have replacement
-
-print(random.shuffle(x))
-print(x)
-
 
 
 # -----------------------------------------------------------------------------
@@ -85,7 +40,7 @@ dgfakdgja
 "jdlfkaj"
 '''
 print(this_string)   
-print(this_string.find('j'))
+print(this_string.find('j')) # find is better than index, it returns -1 if there is no such substring
 print(this_string.count('j'))
 
 # format string
@@ -94,6 +49,7 @@ print('{0:.3f}'.format(1.0/3))
 
 # 使用下划线填充文本，并保持文字处于中间位置, 使用 (^) 定义 '___hello___'字符串长度为 11
 print('{0:_^11}'.format('hello'))
+print('{0:_^11}'.format('hell'))
 # others like {: 02} {: , } {: ,.2f}
 # see : https://docs.python.org/3.1/library/string.html
 
@@ -117,62 +73,11 @@ name')
 print\
 ('what is your name')
 
-
-# about print
-# print end
-print('this has no new line', end='')
-
-# print in file
-print(x, file=f)
-
-
-
 # --------------------------------------------------------------------------
-# 2 - datetime
-import datetime as dt
-
-# get time
-gvr = dt.date(1993,8,8) # year month day
-lauch_time = dt.time(23,12,10)
-
-# date format
-# see: https://www.w3schools.com/python/python_datetime.asp
-print(dt.datetime.strptime('07/20/1969', '%m/%d/%Y'))
-print(dt.datetime.strptime('07:06:05', '%H:%M:%S'))
-print(dt.datetime.strptime('07:06:05', '%X'))
-
-
-# print time
-print(gvr)
-print(gvr.strftime('%A'))
-print(gvr.strftime('%B, %y'))
-print(gvr.day == gvr.strftime('%d'))
-
-
-# operations on time
-gvr + 100
-gvr + dt.timedelta(days=100)
-gvr + dt.timedelta(seconds=100000)
-
-(dt.datetime.today()-gvr).days
-
-
-'''
-    init: dt.date and dt.time
-
-    format: dt.datetime.strptime(str, re), DT.strftime(re) or simplier re.day
-
-    delta: dt.timedelta
-
-
-'''
-
-
-# --------------------------------------------------------------------------
-# 3 - list, tuple, set and dictionary
+# 2 - list, tuple, set and dictionary
 
 # list
-a = [1,2,3,4]
+a = [1,2,3,4,5]
 print(a.index(2))
 print(a.remove(2))
 print(a)
@@ -181,20 +86,20 @@ print(a.pop())
 print(1, a)
 print(a.pop(0))
 print(2, a)
-print(a.insert(0, 10))
+print(a.insert(0, 30))
 print(3, a)
-print(a.insert(-1, 10))
+print(a.insert(-1, 40))
 print(4, a)
 
 # in
 print(5 in [1,3,4,5])
 a=[[1,2],[3,5],[5]]
-print([5 in i for i in a])
+print([(5 in i) for i in a])
 
 # filter
 list_x = [1,2,3,None,4,1,2,3,None]
 
-x2 = filter(None, list_x)  # filter out NA value. Same as map, it do not return list
+x2 = filter(None, list_x)  # filter out NA value. Same as map, it do NOT return list
 x2 = list(x2)
 print(x2)
 
@@ -252,10 +157,19 @@ points.sort(key=lambda i: i['y'])
 print(points)
 
 # example, how to sort a dic?
-dic = dict(points[0], **points[1])
+dic = dict(points[0], **points[1]) # merge dict and kwargs
 sorted(list(dic.items()), key=lambda i: i[1])
 
+# dict loc
+dikt = dict(a=1, b=2, c=3)
+dikt2=dikt
+dikt["a"]=10
+print(dikt2["a"])
 
+import copy
+dikt3=copy.copy(dikt)
+dikt["a"]=10
+print(dikt3["a"])
 
 '''
     ##### list: 
@@ -287,13 +201,14 @@ def generator():
         yield i
 
 # use 1
+for i in generator():
+    print(i)
+    
+# use 2
 g=generator()
 print(next(g))
 print(next(g)) 
 
-# use 2
-for i in g:
-    print(i)
     
 # simple version of yield
 g = (i for i in range(10))

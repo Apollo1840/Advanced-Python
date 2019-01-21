@@ -58,8 +58,9 @@ class Employee():
     
     @property
     def fullname(self):
-        return ' '.join(self.fname, self.lname)
-    
+        print("calculating fullname")
+        return ' '.join([self.fname, self.lname])
+        
     @fullname.setter
     def fullname(self, fullname):
         self.fname, self.lname = fullname.split()
@@ -70,10 +71,12 @@ class Employee():
         self.lname = None
         print('Persons name missed')
 
-
 p = Employee('An','Ng')
 print(p.fullname)
+print(p.fullname)
 p.fullname = 'Andrew Ng'
+print(p.fullname)
+
 print(p.fname)
 del p.fullname
 print(p.lname)

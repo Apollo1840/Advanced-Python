@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# the first thing is how do you learn python by yourself
+# the first thing is: how do you learn python by yourself
 # dir
 a = 'dgadfag'
 dir(a)
@@ -23,22 +23,13 @@ help(add2)
 help(repr)
 
 
-
+# - - - - - - - - - - - - 
 # what is repr and eval:
 a='dgadf dga'
 print(a)
-repr(a)
+repr(a) # print the variable in the way python(not human) reads
 eval(repr(a))==a
-
-
-# math
-import math
-dir(math)
-math.ceil(3.4)
-
-
-
-
+# - - - - - - - - - - - - 
 
 
 
@@ -46,6 +37,7 @@ math.ceil(3.4)
     to know:
         1, what is help() and dir(), how to see functions in a library
         2, how to see built_in functions
-        3, what is repr() and eval()
+        
+        * what is repr() and eval()
 
 '''

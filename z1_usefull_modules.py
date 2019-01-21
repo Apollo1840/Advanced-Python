@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+
+
+# math
+import math
+dir(math)
+math.ceil(3.4)
+
+
+
 # -------------------------------------------------
 # system and os
 import sys
@@ -47,7 +56,7 @@ print(datetime.fromtimestamp(mod_time))
 
 
 # -------------------------------------------------
-# see detail
+# see detail (low level code) of a function 
 import dis
 dis.dis(swap)
 
@@ -77,6 +86,7 @@ Color = namedtuple('Color', ['r','g','b'])
 color = Color(255,255,0)
 # color = Color(r=255,g=255,b=0)
 print(color.r)
+
 
 
 
