@@ -1,1 +1,4 @@
 /cheatsheet
+.ipynb_checkpoints/*
+.idea/*
+.spyproject/*
