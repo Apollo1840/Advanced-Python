@@ -107,5 +107,18 @@ print(stone.show_stone())
 print(stone.show_stone2())
 
 
+# call by reference
+
+class A:
+    
+    def __init__(self, a):
+        self.a = a
+        
+a = [1,2,3]
+a_obj = A(a)
+a_obj.a[2] = 10
+print(a)
+
+
 
   
