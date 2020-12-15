@@ -5,7 +5,7 @@
 class Solution(object):
     def isValid(self, s):
         stack = []
-        dict = {"]":"[", "}":"{", ")":"("}
+        dict = {"]": "[", "}": "{", ")": "("}
         for char in s:
             if char in dict.values():
                 stack.append(char)
@@ -16,9 +16,6 @@ class Solution(object):
                 return False
         return stack == []
 
-  
-
-
 
 # -----------------------------------------------
 # Linked List Cycle
@@ -26,22 +23,24 @@ class Solution(object):
 
 # Definition for singly-linked list.
 class ListNode(object):
-     def __init__(self, x):
-         self.val = x
-         self.next = None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution(object):
     def hasCycle(self, head):
         fast = slow = head
 
         while slow and fast and fast.next:
-            slow = slow.next                # Step of 1
-            fast = fast.next.next           # Setp of 2
+            slow = slow.next  # Step of 1
+            fast = fast.next.next  # Setp of 2
 
-            if slow is fast:                # Checking whether two pointers meet
+            if slow is fast:  # Checking whether two pointers meet
                 return True
 
         return False
+
 
 # -----------------------------------------------
 # Palindrome Linked List
@@ -49,9 +48,10 @@ class Solution(object):
 
 # Definition for singly-linked list.
 class ListNode(object):
-     def __init__(self, x):
-         self.val = x
-         self.next = None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution(object):
     def isPalindrome(self, head):
@@ -62,7 +62,7 @@ class Solution(object):
             slow = slow.next
         # the mid node is slow
         print("mid", slow.val)
-        
+
         # reverse the second half
         node = None
         while slow:
@@ -70,16 +70,16 @@ class Solution(object):
             slow.next = node
             node = slow
             slow = nxt
-            
+
         # compare the first and second half nodes
-        while node: # while node and head: (the node must be the shorter one)
+        while node:  # while node and head: (the node must be the shorter one)
             if node.val != head.val:
                 return False
             node = node.next
             head = head.next
         return True
-        
-        
+
+
 ln0 = ListNode(1)
 ln1 = ListNode(2)
 ln2 = ListNode(2)
@@ -91,12 +91,10 @@ s = Solution()
 s.isPalindrome(ln0)
 
 
-
-
 # -----------------------------------------------
 # Min Stack
 # Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-        
+
 class MinStack(object):
 
     def __init__(self):
@@ -115,16 +113,17 @@ class MinStack(object):
     def getMin(self):
         return self.stack[-1][1]
 
+
 # ----------------------------------------------------
 # Sqrt(x)
-         
+
 class Solution(object):
     def mySqrt(self, x):
-        l,r = 0,x
+        l, r = 0, x
         while l < r:
-            mid = (l+r) // 2
-            if x < mid*mid:
+            mid = (l + r) // 2
+            if x < mid * mid:
                 r = mid
             else:
                 l = mid + 1
-        return l-1 if l>1 else l
+        return l - 1 if l > 1 else l
