@@ -113,3 +113,5 @@ logging.basicConfig(filename='material/logger03.log',
 
 logger3 = logging.getLogger()
 logger3.info('you can the see the asctime of this entry')
+
+# really handle loging system in projects: https://www.youtube.com/watch?v=jxmzY9soFXg&ab_channel=CoreySchafer
