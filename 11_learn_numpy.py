@@ -46,16 +46,16 @@ xn = np.random.randn(100000)  # randn is normalvariate
 
 # more np functions:
 A = np.array([1, 2, 3, 4])
-print(np.sum(A,  axis=0))  # axis = 0 means columnwise
+print(np.sum(A, axis=0))  # axis = 0 means columnwise
 print(np.prod(A, axis=0))
 
 print(np.cumsum(A, axis=0))
-print(np.diff(A,   axis=0))  # a[n] = x[n+1] -x[n]
+print(np.diff(A, axis=0))  # a[n] = x[n+1] -x[n]
 
 print(np.var(A, axis=0))
 print(np.std(A, axis=0))
 
-print(np.max(A,    axis=0))
+print(np.max(A, axis=0))
 print(np.argmax(A, axis=0))
 
 print(np.sort(A, axis=0))

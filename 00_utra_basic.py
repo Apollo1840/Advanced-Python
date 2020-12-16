@@ -4,33 +4,32 @@
 # dir
 a = 'dgadfag'
 dir(a)
-b = [1,2,3]
+b = [1, 2, 3]
 dir(b)
 
 dir()
 dir('__builtins__')
 
 
-
 # help
-def add2(x,y):
+def add2(x, y):
     'add two object'
-    
-    print('the sum is', x+y)
-    return x+y
+
+    print('the sum is', x + y)
+    return x + y
+
+
 help(add2)
 
 help(repr)
 
-
-# - - - - - - - - - - - - 
+# - - - - - - - - - - - -
 # what is repr and eval:
-a='dgadf dga'
+a = 'dgadf dga'
 print(a)
-repr(a) # print the variable in the way python(not human) reads
-eval(repr(a))==a
+repr(a)  # print the variable in the way python(not human) reads
+eval(repr(a)) == a
 # - - - - - - - - - - - - 
-
 
 
 '''

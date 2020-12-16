@@ -5,8 +5,7 @@ Created on Thu Aug 16 17:44:01 2018
 @author: zouco
 """
 
-
-str1= 'this is good\nthis is new line'
+str1 = 'this is good\nthis is new line'
 print(str1)
 
 dir(str1)
@@ -17,11 +16,10 @@ dgfakdgja
     dfj'gadg'
 "jdlfkaj"
 '''
-print(this_string)  
+print(this_string)
 
-str2= r'this is good\nthis is new line'
+str2 = r'this is good\nthis is new line'
 print(str2)
-
 
 # find
 str1.count('t')
@@ -29,23 +27,21 @@ str1.index('t')
 str1.find('t')
 
 import re
-find_all = lambda string,text: [m.start() for m in re.finditer(text, string)]
+
+find_all = lambda string, text: [m.start() for m in re.finditer(text, string)]
 print(find_all(str1, 't'))
 
 # replace
-str1.replace('t','r')
+str1.replace('t', 'r')
 
 str1.upper()
 str1.lower()
 str1.title()
 
-
 # join
-print('|'.join(['a','b','c']))
+print('|'.join(['a', 'b', 'c']))
 print(''.join(reversed(str1)))
 print(str.upper(' '.join(list(str1))))
-
-
 
 # re
 #########################################################################
@@ -71,7 +67,7 @@ print(str.upper(' '.join(list(str1))))
 
 import re
 
-p = re.compile('t[a-z]{1,}') # one or more
+p = re.compile('t[a-z]{1,}')  # one or more
 m = p.match('tempo')
 
 # or 
@@ -80,7 +76,7 @@ bool(m)
 
 if m:
     print('Match found: ', m.group())
-    print(m.start())   # must be 0
+    print(m.start())  # must be 0
     print(m.end())
     print(m.span())
 else:
@@ -99,10 +95,9 @@ p = re.compile('[A-Z]+')
 m = p.findall('ZCY goes to ATM to get some EURO.')
 print(m)
 
-
 abbr = re.compile('[A-Z]+')
 m = abbr.finditer('ZCY goes to ATM to get some EURO.')
-print([(mm.start(),mm.group()) for mm in m])
+print([(mm.start(), mm.group()) for mm in m])
 
 # regrex:
 
@@ -121,7 +116,7 @@ p = re.compile('(ab)*')
 # level 
 p = re.compile('(a(b)c)d')
 m = p.match('abcd')
-m.groups() # without group(0), in findall, if group exists, group(0) will also be ignore
+m.groups()  # without group(0), in findall, if group exists, group(0) will also be ignore
 m.group()
 m.group(0)
 # 'abcd'
@@ -129,8 +124,7 @@ m.group(1)
 # 'abc'
 m.group(2)
 # 'b'
-m.group(2,1,2)
-
+m.group(2, 1, 2)
 
 # advance
 p = re.compile(r'\b(\w+)\s+\1\b')  # \1 means exact(!) things in group1
@@ -142,36 +136,30 @@ re.findall(r'is(?:.)(.)', str1)  # non-capture group
 
 # ?P<> is group name
 InternalDate = re.compile(r'INTERNALDATE "'
-        r'(?P<day>[ 123][0-9])-(?P<mon>[A-Z][a-z][a-z])-'
-        r'(?P<year>[0-9][0-9][0-9][0-9])'
-        r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'
-        r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'
-        r'"')
+                          r'(?P<day>[ 123][0-9])-(?P<mon>[A-Z][a-z][a-z])-'
+                          r'(?P<year>[0-9][0-9][0-9][0-9])'
+                          r' (?P<hour>[0-9][0-9]):(?P<min>[0-9][0-9]):(?P<sec>[0-9][0-9])'
+                          r' (?P<zonen>[-+])(?P<zoneh>[0-9][0-9])(?P<zonem>[0-9][0-9])'
+                          r'"')
 
 m.groupdict()
 
-
-
-m = re.findall('^a[a-z]{1,3}','abc\nAag\nail', flags=re.M)
+m = re.findall('^a[a-z]{1,3}', 'abc\nAag\nail', flags=re.M)
 m
-m = re.findall('a[a-z]{1,3}','abc\nAag\nail', flags=re.I)
+m = re.findall('a[a-z]{1,3}', 'abc\nAag\nail', flags=re.I)
 m
-m = re.findall('.*','abc\nAag\nail', flags=re.S)   # re.DOTALL means dot now present all character
+m = re.findall('.*', 'abc\nAag\nail', flags=re.S)  # re.DOTALL means dot now present all character
 m
 
 # mark!
-m = re.search(r'\n','\n\n\n')
+m = re.search(r'\n', '\n\n\n')
 m.groups()
-m = re.findall(r'\n','\n\n\n')
+m = re.findall(r'\n', '\n\n\n')
 print(m)
 
-
-
-
-
 # split
-re.split('[,\.\?]','hello, how are you? iam fine, thank you. And you?')
-re.split('([,\.\?])','hello, how are you? iam fine, thank you. And you?')
+re.split('[,\.\?]', 'hello, how are you? iam fine, thank you. And you?')
+re.split('([,\.\?])', 'hello, how are you? iam fine, thank you. And you?')
 
 label = re.compile('<[^<>]+>')
-content= re.compile('>([^<]+)<')
+content = re.compile('>([^<]+)<')
