@@ -121,3 +121,76 @@ a = [1, 2, 3]
 a_obj = A(a)
 a_obj.a[2] = 10
 print(a)
+
+
+# multiple inheritance
+
+class A:
+    name = "a"
+
+    def __init__(self, x):
+        self.x = x
+
+    @classmethod
+    def from_x(cls, x=10):
+        return cls(x)
+
+    def show(self):
+        print("show a")
+
+
+class C:
+    name = "c"
+
+    def __init__(self, x):
+        self.x = x
+
+    @classmethod
+    def from_x(cls, x=10):
+        return cls(x * 100)
+
+    def show(self):
+        print("c is also mother")
+
+
+class B(A, C):
+    name = "b"
+
+    @classmethod
+    def from_x(cls, x=10, y=20):
+        b = super().from_x(x)
+        b.y = y
+        return b
+
+    def show(self):
+        super().show()
+        print("show b")
+
+
+a = A.from_x(10)
+print(a.name)
+print(a.x)
+
+b = B.from_x(15, 25)
+print(b.name)  # b
+print(b.x)  # 10
+b.show()  # show a \n show b
+
+
+class Student:
+
+    def __init__(self, student_id):
+        self.student_id = student_id
+
+
+class Dancer:
+
+    def __init__(self, style):
+        self.style = style
+
+
+class DanceStudent(Student, Dancer):
+
+    def __init__(self, student_id, style):
+        Student.__init__(self, student_id)
+        Dancer.__init__(self, style)

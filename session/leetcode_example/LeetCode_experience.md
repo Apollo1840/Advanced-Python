@@ -12,12 +12,19 @@ I call it DP problem. such as:
 * rob
 * ...
 
-### Tech 2: Hashtable
+see details in `dynamic_programming.py`.
+
+### Tech 2: Use data structure assisstant
+
+#### Queue
+* Valid Parenthese
+
+
+#### Hashtable
 Set a dictionary as alternative storage to solve your problem.
 
 For example:
 * two sum
-
 
 
 ## Python Point
