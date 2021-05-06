@@ -7,13 +7,39 @@ with open('material/abc.txt', 'w') as f:
     for i in range(10):
         f.write('this is {} line\n'.format(str(i)))
 
-# read    
+# read
 with open('material/abc.txt', 'r') as f:
-    while True:
-        line = f.readline()
-        if len(line) == 0:
-            break
-        print(line, end='')
+    # read all document as a string
+    results = f.read()
+    print(results)
+
+    # read lines iteratively
+    line = f.readline()
+    while line is not None and line != '':
+        print(line)
+        print(line.endswith("\n"))
+        line = f.readline()  # 读取下一行
+
+    # read all iines into RAM
+    lines = f.readlines()
+    for line in lines:
+        print(line)
+
+# write and read string list
+strList = [str(i) for i in range(10)]
+
+
+def writeLines(strList):
+    with open('material/strList.txt', 'w') as f:
+        for line in strList:
+            f.write(line + '\n')
+
+
+def readLines():
+    with open('material/strList.txt', 'r') as f:
+        strList_r = f.readlines()
+    return [line[-1] for line in strList_r]
+
 
 # --------------------------------------------------------------------
 import csv

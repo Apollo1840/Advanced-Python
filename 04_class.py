@@ -125,6 +125,55 @@ print(a)
 
 # multiple inheritance
 
+## 1. first override second
+class A:
+    def print_me(self):
+        print("A")
+
+
+class B:
+    def print_me(self):
+        print("B")
+
+
+class C(A, B):
+
+    def __init__(self):
+        super().__init__()
+
+
+c = C()
+c.print_me()  # A
+
+
+## even like this
+class A:
+    n_num = 0
+
+    def __init__(self, n):
+        self.n = n
+
+
+class B:
+    def __init__(self, n):
+        self.n = n
+
+    @property
+    def n_num(self):
+        return self.n
+
+
+class C(A, B):
+
+    def __init__(self, n):
+        super().__init__(n)
+
+
+c = C(10)
+print(c.n_num)
+
+
+## 2. super() means the first
 class A:
     name = "a"
 
@@ -177,6 +226,7 @@ print(b.x)  # 10
 b.show()  # show a \n show b
 
 
+## 3. the way to seperate
 class Student:
 
     def __init__(self, student_id):
