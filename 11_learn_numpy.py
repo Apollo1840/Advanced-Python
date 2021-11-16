@@ -10,23 +10,34 @@ import time
 
 # 0 - initilization
 # array
-print(np.arange(5))
-print(np.arange(0, 11, 2))  # exclude 11
+print("range:", np.arange(5))
+print("range:", np.arange(0, 11, 2))  # exclude 11, gap = 2
 
-print(np.linspace(0, 10, 100))  # include 10
-print(np.linspace(0, 2 * np.pi, 100))
+print("linspace:", np.linspace(0, 10, 6))  # include 10, number=6
+print("linspace:", np.linspace(0, 2 * np.pi, 10))
 # np.logspace(0,2,10)
 
 print(np.zeros(3))
 print(np.ones(3))
 
+#######################################################
 # matrix
 print(np.zeros((3, 3)))
 print(np.ones((3, 3)))
 print(np.eye(3))
 
-t0 = np.array([[1, 2], [3, 4]])
-print(np.tile(t0, (2, 2)))
+# --------
+print("-" * 32)
+t0 = np.array([1, 2, 3])
+# print(t0)
+print(t0.shape)
+
+t1 = np.tile(t0, (3, 1))
+print(t1)
+print(t1.shape)
+t2 = np.tile(t1, (2, 2))
+print(t2)
+print(t2.shape)
 
 a = np.array([1, 4, 2, 6, 7, 8, 9, 3, 4, 6, 4, 5, 7, 3, 6, 2.3])
 print(a.shape)
@@ -36,11 +47,12 @@ A = a.reshape(4, 4)  # the row order is keeped
 # use resize will change the a
 print(A)  # remember the A here
 
+# A userful way to create random tensor
 x1 = np.random.randn(3, 3)
 print(x1)
 
 # 1 - np functions on np.array
-xn = np.random.randn(100000)  # randn is normalvariate
+xn = np.random.randn(100000)  # for demo purposes,, randn is normalvariate
 # %time print(sum(xn))
 # %time print(np.sum(xn))  # np function is incr ediablely faster
 
@@ -85,7 +97,8 @@ x_sample = x[::10]
 x_reverse = x[::-1]
 
 # 2) reshape and ravel
-print(A.reshape(2, -1, order='F'))  # -1 means adaptive
+print(A.reshape(2, -1))  # -1 means adaptive
+
 print(A.ravel())  # return to vector
 
 # 3) np.dot (faster than for loop multiplicaiton)
@@ -99,19 +112,19 @@ a = np.random.randn(5)
 print(a.shape)
 print(a.T)
 print(np.dot(a.T, a))
-
 # 4) stack and split
-a = np.floor(10 * np.random.random((2, 12)))
-b = np.floor(10 * np.random.random((2, 12)))
+
+a = np.floor(10 * np.random.random((2, 6)))
+b = np.floor(10 * np.random.random((2, 6)))
 print('a\n', a)
 print('b\n', b)
 
 # stack
 print(np.hstack((a, b)))
-print(np.c_[a, b])  # increase columns
+print("c_:", np.c_[a, b])  # increase columns
 
 print(np.vstack((a, b)))
-print(np.r_[a, b])  # increase rows
+print("r_:", np.r_[a, b])  # increase rows
 
 # split
 print(np.hsplit(a, 3))  # evenly into 3 part
@@ -135,6 +148,7 @@ logic = [True, True, False, True]
 np.where(logic)
 np.where(logic, range(4), range(0, 40, 10))  # another ways to use np.where
 np.nonzero([0, 2, 0, 1])  # it is better to not use it on boolean
+# == np.where(!=0)
 
 np.logical_not(logic)
 
@@ -144,11 +158,13 @@ a2 = a
 a_copy = a.copy()
 a_view = a.view()
 
-a[0, 0] = 10
-print(a)
-print(a2)
-print(a_copy)
-print(a_view)
+a[0, 0] = 404
+print("a:", a)
+print("a equal:", a2)
+print("a copy:", a_copy)
+print("a view:", a_view)
+
+print("-" * 32)
 
 a = np.array([[1, 4, 2, 6, 7, 8, 9, 3, 4, 6, 4, 5, 7, 3, 6, 2.3]])
 a2 = a
@@ -156,37 +172,39 @@ a_copy = a.copy()
 a_view = a.view()
 
 a.shape = (4, 4)
-a[0, 0] = 10
-print(a)
-print(a2)
-print(a_copy)
-print(a_view)
+a[0, 0] = 404
+print("a:", a)
+print("a equal:", a2)
+print("a copy:", a_copy)
+print("a view:", a_view)
 
 #################  bonus operation   #################
+
+# np.all
+np.all([True, False])
+np.any([True, False])
 
 # np.c_ for 1 dim array
 A = np.arange(6)
 print(np.c_[A, A])
+
+# cov
+x = np.array([1, 2, 3])
+y = x
+X = np.concatenate([x, y+0.5])
+print("cov:", np.cov(x, y))
+print("cov:", np.cov(X.T))  # each column of X is an attribute
+
+print("corrcoef:", np.corrcoef(x, y))
 
 # np.meshgrid
 xx, yy = np.meshgrid(A, A)
 all_node = zip(xx.ravel(), yy.ravel())
 print(list(all_node))
 
-# np.all
-np.all([True, False])
-np.any([True, False])
-
 # np.apply_along_axis
-np.apply_along_axis(lambda x: np.sum(x), 0, A.reshape(2, 3))
+print("apply along axis", np.apply_along_axis(lambda x: np.sum(x), 0, A.reshape(2, 3)))
 
-# cov
-y = x
-X = np.concatenate([x, y])
-np.cov(x, y)
-np.cov(X.T)  # each column of X is an attribute
-
-np.corrcoef(x, y)
 
 ##########################################################################
 ##########################################################################
@@ -227,7 +245,6 @@ print(a)
 A @ B1  # np.dot
 
 np.repeat([1, 2, 3], 5).reshape(3, 5)
-
 # newaxis
 from numpy import newaxis
 
@@ -241,10 +258,14 @@ print(b.shape)
 b = a[:, newaxis]
 print(b.shape)
 
+# add new axis
 a = a[:-1]
 A = a.reshape(3, 3)
+print("A.shape", A.shape)
 B = A[:, newaxis, :]
+print("B shape", B.shape)
 print(B)
+
 # delete newaxis
 np.squeeze(A)
 
