@@ -2,7 +2,7 @@
 # Intersection of Two Arrays II
 # Given two arrays, write a function to compute their intersection.
 
-class Solution(object):
+class Intersection_of_Two_Arrays_II(object):
     def intersect(self, nums1, nums2):
         d = {}
         result = []
@@ -26,7 +26,7 @@ class Solution(object):
         return result
 
 
-s = Solution()
+s = Intersection_of_Two_Arrays_II()
 s.intersect([4, 9, 5], [9, 4, 9, 8, 4])
 
 
@@ -41,7 +41,7 @@ class ListNode:
         self.next = None
 
 
-class Solution:
+class Merge_Two_Sorted_Lists:
     def mergeTwoLists(self, l1, l2):
         if l1 is None:
             return l2
@@ -60,7 +60,7 @@ class Solution:
 # Pascal's Triangle
 # Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
 
-class Solution:
+class Pascal_Triangle:
     def generate(self, numRows):
 
         def Pt(a):
@@ -76,11 +76,36 @@ class Solution:
         return res
 
 
+class Pascal_Triangle:
+    def generate(self, numRows):
+        pt = lambda a: [a[i] + a[i + 1] for i in range(len(a) - 1)]
+        res = [[1]]
+        for i in range(numRows - 1):
+            res.append([1] + pt(res[i]) + [1])
+        return res
+
+
+class Pascal_Triangle:
+    def generate(self, numRows):
+        def pt(a):
+            mid = len(a) // 2
+            if len(a) % 2 == 0:
+                b_half = [a[i] + a[i + 1] for i in range(mid - 1)]
+                return b_half + [a[mid - 1] + a[mid]] + list(reversed(b_half))
+            else:
+                b_half = [a[i] + a[i + 1] for i in range(mid)]
+                return b_half + list(reversed(b_half))
+        res = [[1]]
+        for i in range(numRows - 1):
+            res.append([1] + pt(res[i]) + [1])
+        return res
+
+
 # -----------------------------------------------
 # Symmetric Tree
 # Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
 
-class Solution:
+class Symmetric_Tree:
     def isSymmetric(self, root):
         if root is None:
             return True
@@ -101,11 +126,38 @@ class Solution:
             return False
 
 
+class Symmetric_Tree:
+    def isSymmetric(self, root):
+        def isSym(left, right):
+            if left and right:
+                return left.val == right.val and isSym(left.left, right.right) and isSym(left.right, right.left)
+            else:
+                return left is right
+
+        return isSym(root.left, root.right)
+
+
+# -----------------------------------------
+# Balance Tree
+# trick: recursive at the same time
+
+class Balance_Tree:
+    def isBalanced(self, root):
+        def check(node):
+            if node is None:
+                return 0, True
+            l_depth, l_balanced = check(node.left)
+            r_depth, r_balanced = check(node.right)
+            return max(l_depth, r_depth) + 1, l_balanced and r_balanced and abs(l_depth - r_depth) <= 1
+
+        return check(root)[1]
+
+
 # ----------------------------------------------------
 # Number of 1 Bits
 # Write a function that takes an unsigned integer and return the number of '1' bits it has (also known as the Hamming weight). 
 
-class Solution(object):
+class Number_of_1_Bits(object):
     def hammingWeight(self, n):
         sum1 = 0
         while n:
@@ -125,7 +177,7 @@ class ListNode(object):
         self.next = None
 
 
-class Solution(object):
+class Linked_List_Cycle(object):
     def hasCycle(self, head):
         fast = slow = head
 
@@ -150,7 +202,7 @@ class ListNode(object):
         self.next = None
 
 
-class Solution(object):
+class Palindrome_Linked_List(object):
     def isPalindrome(self, head):
         fast = slow = head
         # find the mid node
@@ -184,7 +236,7 @@ ln3 = ListNode(1)
 ln0.next = ln1
 ln1.next = ln2
 ln2.next = ln3
-s = Solution()
+s = Palindrome_Linked_List()
 s.isPalindrome(ln0)
 
 
@@ -214,7 +266,7 @@ class MinStack(object):
 # ----------------------------------------------------
 # Sqrt(x)
 
-class Solution(object):
+class Sqrt(object):
     def mySqrt(self, x):
         l, r = 0, x
         while l < r:
